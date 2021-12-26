@@ -1,6 +1,6 @@
 import streamlit as st
 import sympy as sp
-import numpy as np
+from sympy.core.sympify import SympifyError
 
 
 def create_page_layout():
@@ -12,17 +12,19 @@ def create_page_layout():
 
     if eq_input and var_input:
         if var_input.isnumeric():
-            st.text(
-                "Cannot differentiate with respect to a number, please input a valid differentiation variable"
-            )
-        elif sp.sympify(eq_input)==False or sp.sympify(var_input)==False:
-            st.text(
-                "Cannot parse equation or variable, please rewrite"
-            )
+                st.text(
+                    "Cannot differentiate with respect to a number, please input a valid integration variable"
+                )
         else:
-            eq_sp = sp.sympify(eq_input)
-            var_sp = sp.sympify(var_input)
+            try:
+                eq_sp = sp.sympify(eq_input)
+                var_sp = sp.sympify(var_input)
 
-            st.latex(eq_sp)
-            st.latex(var_sp)
-            st.latex(eq_sp.diff(var_sp))
+                try:
+                    st.latex(eq_sp)
+                    st.latex(var_sp)
+                    st.latex(eq_sp.diff(var_sp))
+                except ValueError as e:
+                    st.text("Invalid intgration variable")      
+            except SympifyError as e:
+                st.text("Cannot parse equation or integration variable")
