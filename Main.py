@@ -16,9 +16,12 @@ class Multiplage:
 
     def run(self) -> None:
 
-        page = st.sidebar.selectbox("Choose page",self.pages,format_func=lambda page: page['title'])
+        page = st.sidebar.selectbox(
+            "Choose page", self.pages, format_func=lambda page: page["title"]
+        )
 
-        page['function']()
+        page["function"]()
+
 
 app = Multiplage()
 app.add_page("Derivative page", diff_page.create_page_layout)
