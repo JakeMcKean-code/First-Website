@@ -1,5 +1,6 @@
 import streamlit as st
 import Derivative_page as diff_page
+import Integral_page as int_page
 
 
 class Multiplage:
@@ -25,4 +26,5 @@ class Multiplage:
 
 app = Multiplage()
 app.add_page("Derivative page", diff_page.create_page_layout)
+app.add_page("Integrate page", int_page.create_page_layout)
 app.run()
