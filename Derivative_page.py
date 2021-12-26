@@ -12,4 +12,7 @@ def create_page_layout():
         eq_sp = sp.sympify(eq_input)
         var_sp = sp.sympify(var_input)
 
+
+        st.latex(eq_sp)
+        st.latex(var_sp)
         st.latex(eq_sp.diff(var_sp))
