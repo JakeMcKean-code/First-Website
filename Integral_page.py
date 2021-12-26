@@ -5,8 +5,8 @@ import sympy as sp
 def create_page_layout():
     """Function to create the layout of the page"""
 
-    eq_input = st.text_input("Enter equation you want to differentiate:")
-    var_input = st.text_input("Enter variable to differetiate with respect to:")
+    eq_input = st.text_input("Enter equation you want to integrate:")
+    var_input = st.text_input("Enter variable to integrate with respect to:")
 
     if eq_input and var_input:
         eq_sp = sp.sympify(eq_input)
@@ -14,4 +14,4 @@ def create_page_layout():
 
         st.latex(eq_sp)
         st.latex(var_sp)
-        st.latex(eq_sp.diff(var_sp))
+        st.latex(sp.integrate(eq_sp, var_sp))
