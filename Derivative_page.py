@@ -7,7 +7,7 @@ def create_page_layout():
     """Function to create the layout of the page"""
 
     eq_input = st.text_input(
-        "Enter equation you want to differentiate."
+        "Enter equation you want to differentiate ."
         "(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)"
     )
     var_input = st.text_input("Enter variable to differetiate with respect to:")
