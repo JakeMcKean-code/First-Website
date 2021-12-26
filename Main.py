@@ -1,4 +1,5 @@
 import streamlit as st
+import Derivative_page as diff_page
 
 
 class Multiplage:
@@ -18,3 +19,7 @@ class Multiplage:
         page = st.sidebar.selectbox("Choose page",self.pages,format_func=lambda page: page['title'])
 
         page['function']()
+
+app = Multiplage()
+app.add_page("Derivative page", diff_page.create_page_layout)
+app.run()
