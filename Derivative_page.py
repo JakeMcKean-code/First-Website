@@ -33,7 +33,7 @@ def create_page_layout():
                         st.subheader("Derivative")
                         st.latex(eq_sp.diff(var_sp))
                         #st.latex(var_sp)
-                    st.latex(eq_sp.diff(var_sp))
+                    
                 except ValueError as e:
                     st.error("Invalid intgration variable")
 
