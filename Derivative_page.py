@@ -6,6 +6,20 @@ from sympy.core.sympify import SympifyError
 def create_page_layout():
     """Function to create the layout of the page"""
 
+    st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: url("url_goes_here")
+    }
+   .sidebar .sidebar-content {
+        background: url("url_goes_here")
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
     st.header("Derivative Calculator")
 
     st.warning("(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)")
