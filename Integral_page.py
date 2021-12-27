@@ -2,6 +2,13 @@ import streamlit as st
 import sympy as sp
 from sympy.core.sympify import SympifyError
 
+''' TO DO
+
+Add better formatting for the output of the answer
+Add buttons to subsitute values in for the variables
+Add button to output latex code for user 
+
+'''
 
 def create_page_layout():
     """Function to create the layout of the page"""
