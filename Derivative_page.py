@@ -10,10 +10,10 @@ def create_page_layout():
     """
     <style>
     .reportview-container {
-        background: url("url_goes_here")
+        background: #808080
     }
    .sidebar .sidebar-content {
-        background: url("url_goes_here")
+        background: #dddddd
     }
     </style>
     """,
