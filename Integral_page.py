@@ -8,10 +8,10 @@ def create_page_layout():
 
     st.header("Intgral Calculator")
 
-    st.warning("(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)")
-    eq_input = st.text_input(
-        "Enter equation you want to integrate:"
+    st.warning(
+        "(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)"
     )
+    eq_input = st.text_input("Enter equation you want to integrate:")
     var_input = st.text_input("Enter variable to integrate with respect to:")
 
     if eq_input and var_input:
@@ -31,9 +31,9 @@ def create_page_layout():
                         st.latex(eq_sp)
                     with col2:
                         st.subheader("Integral")
-                        st.latex(sp.integrate(eq_sp,var_sp)) 
-                        #st.latex(var_sp)
-                    
+                        st.latex(sp.integrate(eq_sp, var_sp))
+                        # st.latex(var_sp)
+
                 except ValueError as e:
                     st.error("Invalid intgration variable")
 
