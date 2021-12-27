@@ -6,15 +6,15 @@ from sympy.core.sympify import SympifyError
 def create_page_layout():
     """Function to create the layout of the page"""
 
+    st.warning("(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)")
     eq_input = st.text_input(
-        "Enter equation you want to differentiate ."
-        "(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)"
+        "Enter equation you want to differentiate."
     )
     var_input = st.text_input("Enter variable to differetiate with respect to:")
 
     if eq_input and var_input:
         if var_input.isnumeric():
-            st.text(
+            st.error(
                 "Cannot differentiate with respect to a number, please input a valid integration variable"
             )
         else:
@@ -27,7 +27,7 @@ def create_page_layout():
                     st.latex(var_sp)
                     st.latex(eq_sp.diff(var_sp))
                 except ValueError as e:
-                    st.text("Invalid intgration variable")
+                    st.error("Invalid intgration variable")
 
             except SympifyError as e:
-                st.text("Cannot parse equation or integration variable")
+                st.error("Cannot parse equation or integration variable")
