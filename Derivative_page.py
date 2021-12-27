@@ -6,6 +6,8 @@ from sympy.core.sympify import SympifyError
 def create_page_layout():
     """Function to create the layout of the page"""
 
+    st.header("Derivative Calculator")
+
     st.warning("(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)")
     eq_input = st.text_input(
         "Enter equation you want to differentiate."
@@ -23,8 +25,13 @@ def create_page_layout():
                 var_sp = sp.sympify(var_input)
 
                 try:
-                    st.latex(eq_sp)
-                    st.latex(var_sp)
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.subheader("Inputted equation")
+                        st.latex(eq_sp)
+                    with col2:
+                        st.subheader("Differentiable variable")
+                        st.latex(var_sp)
                     st.latex(eq_sp.diff(var_sp))
                 except ValueError as e:
                     st.error("Invalid intgration variable")

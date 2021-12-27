@@ -6,6 +6,8 @@ from sympy.core.sympify import SympifyError
 def create_page_layout():
     """Function to create the layout of the page"""
 
+    st.header("Intgral Calculator")
+
     st.warning("(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)")
     eq_input = st.text_input(
         "Enter equation you want to integrate:"
@@ -23,11 +25,16 @@ def create_page_layout():
                 var_sp = sp.sympify(var_input)
 
                 try:
-                    st.latex(eq_sp)
-                    st.latex(var_sp)
-                    st.latex(sp.integrate(eq_sp, var_sp))
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.subheader("Inputted equation")
+                        st.latex(eq_sp)
+                    with col2:
+                        st.subheader("Integration variable")
+                        st.latex(var_sp)
+                    st.latex(sp.integrate(eq_sp,var_sp))
                 except ValueError as e:
-                    st.erro("Invalid intgration variable")
+                    st.error("Invalid intgration variable")
 
             except SympifyError as e:
                 st.error("Cannot parse equation or integration variable")
