@@ -10,11 +10,11 @@ def create_page_layout():
     """
     <style>
     .reportview-container {
-        background: #dddddd
-    }
-   .sidebar .sidebar-content {
         background: #808080
     }
+   .column-container {
+       background: #dddddd
+   }
     </style>
     """,
     unsafe_allow_html=True
