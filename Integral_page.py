@@ -4,7 +4,6 @@ from sympy.core.sympify import SympifyError
 
 """ TO DO
 
-Add better formatting for the output of the answer
 Add buttons to subsitute values in for the variables
 Add button to output latex code for user 
 

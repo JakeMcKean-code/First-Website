@@ -4,13 +4,6 @@ import sympy as sp
 from sympy.core.sympify import SympifyError
 import LaTeX_eq_strings as L_string
 
-""" TO DO
-
-Add better formatting for the output of the answer
-Add button to output latex code for user 
-
-"""
-
 
 def check_input_parse(input):
     """Function to check that the equation or variable can be parsed"""
@@ -83,9 +76,7 @@ def create_page_layout():
                     st.latex(answer)
 
             check_for_code = st.checkbox("Output LaTeX code")
-            if(check_for_code):
+            if check_for_code:
                 check_output_code(check_for_code, eq_sp.diff(var_sp))
             else:
                 pass
-
-    
