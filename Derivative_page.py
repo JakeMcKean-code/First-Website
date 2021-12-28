@@ -1,3 +1,4 @@
+from numpy.core.defchararray import lower
 import streamlit as st
 import sympy as sp
 from sympy.core.sympify import SympifyError
@@ -30,6 +31,12 @@ def check_variable(equation, variable):
         st.error("Invalid intgration variable")
         return False
 
+def check_for_sub(limit):
+    if(limit):
+        return True
+    else:
+        return False
+
 
 def create_page_layout():
     """Function to create the layout of the page"""
@@ -42,26 +49,25 @@ def create_page_layout():
     eq_input = st.text_input("Enter equation you want to differentiate.")
     var_input = st.text_input("Enter variable to differetiate with respect to:")
 
+    col1 = st.columns(1)
+    with col1:
+        sub = st.text_input("Input substitution")
+
     if eq_input and var_input:
 
         if check_input_parse(eq_input) and check_input_parse(var_input):
             eq_sp = sp.sympify(eq_input)
             var_sp = sp.sympify(var_input)
 
-            col1, col2 = st.columns(2)
-            with col1:
+            col_eq, col_d = st.columns(2)
+            with col_eq:
                 st.subheader("Inputted equation")
                 st.latex(eq_sp)
-            with col2:
+            with col_d:
                 st.subheader("Derivative")
                 if check_variable(eq_sp, var_sp):
                     st.latex(eq_sp.diff(var_sp))
-
-
-def check_for_sub():
-    col1, col2 = st.columns(2)
-    with col1:
-        st.text_input("Input lower limit")
-
-    with col2:
-        st.text_input("Input upper limit")
+            if(check_for_sub(sub)):
+                st.subheader(f"Derivative at ${var_sp}$ = {sub}")
+                answer = eq_sp.diff(var_sp).subs(var_sp,sub)
+                st.latex(answer)
