@@ -6,7 +6,6 @@ from sympy.core.sympify import SympifyError
 """ TO DO
 
 Add better formatting for the output of the answer
-Add buttons to subsitute values in for the variables
 Add button to output latex code for user 
 
 """
@@ -31,8 +30,9 @@ def check_variable(equation, variable):
         st.error("Invalid intgration variable")
         return False
 
+
 def check_for_sub(limit):
-    if(limit):
+    if limit:
         return True
     else:
         return False
@@ -49,7 +49,6 @@ def create_page_layout():
     eq_input = st.text_input("Enter equation you want to differentiate.")
     var_input = st.text_input("Enter variable to differetiate with respect to:")
 
-    
     st.info("Substitution not required")
     sub = st.text_input("Input substitution")
 
@@ -67,8 +66,9 @@ def create_page_layout():
                 st.subheader("Derivative")
                 if check_variable(eq_sp, var_sp):
                     st.latex(eq_sp.diff(var_sp))
-            if(check_for_sub(sub)):
-                if(check_input_parse(sub)):
+
+            if check_for_sub(sub):
+                if check_input_parse(sub):
                     st.subheader(f"Derivative at ${var_sp}$ = ${sub}$")
-                    answer = eq_sp.diff(var_sp).subs(var_sp,sub)
+                    answer = eq_sp.diff(var_sp).subs(var_sp, sub)
                     st.latex(answer)
