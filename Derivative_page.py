@@ -67,6 +67,7 @@ def create_page_layout():
                 if check_variable(eq_sp, var_sp):
                     st.latex(eq_sp.diff(var_sp))
             if(check_for_sub(sub)):
-                st.subheader(f"Derivative at ${var_sp}$ = {sub}")
-                answer = eq_sp.diff(var_sp).subs(var_sp,sub)
-                st.latex(answer)
+                if(check_input_parse(sub)):
+                    st.subheader(f"Derivative at ${var_sp}$ = {sub}")
+                    answer = eq_sp.diff(var_sp).subs(var_sp,sub)
+                    st.latex(answer)
