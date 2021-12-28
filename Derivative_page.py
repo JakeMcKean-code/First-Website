@@ -39,13 +39,10 @@ def check_for_sub(limit):
 
 
 def check_output_code(checkbox, derivative):
-    if checkbox:
-        with st.expander("Open to see code to copy to clipboard"):
-            derivative_code = sp.latex(derivative)
-            st.code(derivative_code)
-        return True
-    else:
-        return False
+    with st.expander("Open to see code to copy to clipboard"):
+        derivative_code = sp.latex(derivative)
+        st.code(derivative_code)
+    return True
 
 
 def create_page_layout():
@@ -83,5 +80,8 @@ def create_page_layout():
                     answer = eq_sp.diff(var_sp).subs(var_sp, sub)
                     st.latex(answer)
 
-    check_for_code = st.checkbox("Output $\LaTeX$ code")
-    check_output_code(check_for_code, eq_sp.diff(var_sp))
+    check_for_code = st.checkbox("Output LaTeX code")
+    if(check_for_code):
+        check_output_code(check_for_code, eq_sp.diff(var_sp))
+    else:
+        pass
