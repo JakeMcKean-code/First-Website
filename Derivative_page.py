@@ -11,17 +11,6 @@ Add button to output latex code for user
 """
 
 
-def check_input_numeric(input):
-    """Function to check"""
-    if input.isnumeric():
-        st.error(
-            "Cannot differentiate with respect to a number, please input a valid integration variable"
-        )
-        return True
-    else:
-        return False
-
-
 def check_input_parse(input):
     """Function to check that the equation or variable can be parsed"""
     try:
@@ -54,7 +43,6 @@ def create_page_layout():
     var_input = st.text_input("Enter variable to differetiate with respect to:")
 
     if eq_input and var_input:
-        # check_input_numeric(var_input)
 
         if check_input_parse(eq_input) and check_input_parse(var_input):
             eq_sp = sp.sympify(eq_input)
