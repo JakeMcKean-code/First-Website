@@ -80,8 +80,10 @@ def create_page_layout():
                     answer = eq_sp.diff(var_sp).subs(var_sp, sub)
                     st.latex(answer)
 
-    check_for_code = st.checkbox("Output LaTeX code")
-    if(check_for_code):
-        check_output_code(check_for_code, eq_sp.diff(var_sp))
-    else:
-        pass
+            check_for_code = st.checkbox("Output LaTeX code")
+            if(check_for_code):
+                check_output_code(check_for_code, eq_sp.diff(var_sp))
+            else:
+                pass
+
+    
