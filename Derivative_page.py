@@ -50,6 +50,7 @@ def create_page_layout():
     var_input = st.text_input("Enter variable to differetiate with respect to:")
 
     
+    st.info("Substitution not required")
     sub = st.text_input("Input substitution")
 
     if eq_input and var_input:
