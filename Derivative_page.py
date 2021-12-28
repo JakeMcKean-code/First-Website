@@ -2,6 +2,7 @@ from numpy.core.defchararray import lower
 import streamlit as st
 import sympy as sp
 from sympy.core.sympify import SympifyError
+import LaTeX_eq_strings as L_string
 
 """ TO DO
 
@@ -41,7 +42,8 @@ def check_for_sub(limit):
 def check_output_code(checkbox, derivative):
     with st.expander("Open to see code to copy to clipboard"):
         derivative_code = sp.latex(derivative)
-        st.code(derivative_code)
+        output_code = L_string.latex_eq_start + derivative_code + L_string.latex_eq_end
+        st.code(output_code)
     return True
 
 
