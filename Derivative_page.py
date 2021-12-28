@@ -49,9 +49,8 @@ def create_page_layout():
     eq_input = st.text_input("Enter equation you want to differentiate.")
     var_input = st.text_input("Enter variable to differetiate with respect to:")
 
-    col1 = st.columns(1)
-    with col1:
-        sub = st.text_input("Input substitution")
+    
+    sub = st.text_input("Input substitution")
 
     if eq_input and var_input:
 
