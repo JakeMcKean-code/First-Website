@@ -63,12 +63,15 @@ def create_page_layout():
 
             if check_for_sub(lower_limit, upper_limit):
                 if check_input_parse(lower_limit) and check_input_parse(upper_limit):
-                    st.subheader(f"Definite integral: $\int_{lower_limit}^{upper_limit}$")
-                    answer = sp.integrate(eq_sp,(var_sp,lower_limit, upper_limit))
+                    st.subheader(
+                        f"Definite integral: $\int_{lower_limit}^{upper_limit}$"
+                    )
+                    answer = sp.integrate(eq_sp, (var_sp, lower_limit, upper_limit))
                     st.latex(answer)
+
 
 def check_for_sub(lower_limit, upper_limit):
     if lower_limit and upper_limit:
         return True
-    else: 
+    else:
         return False
