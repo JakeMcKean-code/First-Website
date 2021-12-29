@@ -1,3 +1,4 @@
+from numpy.core.defchararray import lower
 import streamlit as st
 import sympy as sp
 from sympy.core.sympify import SympifyError
@@ -41,6 +42,12 @@ def create_page_layout():
     eq_input = st.text_input("Enter equation you want to integrate:")
     var_input = st.text_input("Enter variable to integrate with respect to:")
 
+    col_lower, col_upper = st.columns(2)
+    with col_lower:
+        lower_limit = st.text_input("Input lower limit")
+    with col_upper:
+        upper_limit = st.text_input("Input upper limit")
+
     if eq_input and var_input:
         if check_input_parse(eq_input) and check_input_parse(var_input):
             eq_sp = sp.sympify(eq_input)
@@ -54,11 +61,14 @@ def create_page_layout():
                 if check_variable(eq_sp, var_sp):
                     st.latex(sp.integrate(eq_sp, var_sp))
 
+            if check_for_sub(lower_limit, upper_limit):
+                if check_input_parse(lower_limit) and check_input_parse(upper_limit):
+                    st.subheader(f"Definite integral: $\int_{lower_limit}^{upper_limit}$")
+                    answer = sp.integrate(eq_sp,(var_sp,lower_limit, upper_limit))
+                    st.latex(answer)
 
-def check_for_sub():
-    col1, col2 = st.columns(2)
-    with col1:
-        st.text_input("Input lower limit")
-
-    with col2:
-        st.text_input("Input upper limit")
+def check_for_sub(lower_limit, upper_limit):
+    if lower_limit and upper_limit:
+        return True
+    else: 
+        return False
