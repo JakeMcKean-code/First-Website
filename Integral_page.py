@@ -48,7 +48,7 @@ def check_output_code(checkbox, integral):
 def create_page_layout():
     """Function to create the layout of the page"""
 
-    st.header("Intgral Calculator")
+    st.header("Integral Calculator")
 
     st.warning(
         "(use * for multiply, / for divide, exp for exponential, sqrt(-1) for i, and spell greek characters fully)"
