@@ -2,6 +2,7 @@ from numpy.core.defchararray import lower
 import streamlit as st
 import sympy as sp
 from sympy.core.sympify import SympifyError
+import LaTeX_eq_strings as L_string
 
 """ TO DO
 
@@ -29,6 +30,19 @@ def check_variable(equation, variable):
     except ValueError as e:
         st.error("Invalid intgration variable")
         return False
+
+def check_for_sub(lower_limit, upper_limit):
+    if lower_limit and upper_limit:
+        return True
+    else:
+        return False
+
+def check_output_code(checkbox, integral):
+    with st.expander("Open to see code to copy to clipboard"):
+        integral_code = sp.latex(integral)
+        output_code = L_string.latex_eq_start + integral_code + L_string.latex_eq_end
+        st.code(output_code)
+    return True
 
 
 def create_page_layout():
@@ -68,10 +82,11 @@ def create_page_layout():
                     )
                     answer = sp.integrate(eq_sp, (var_sp, lower_limit, upper_limit))
                     st.latex(answer)
+            
+            check_for_code = st.checkbox("Output LaTeX code")
+            if check_for_code:
+                check_output_code(check_for_code, sp.integrate(eq_sp, var_sp))
+            else:
+                pass
 
 
-def check_for_sub(lower_limit, upper_limit):
-    if lower_limit and upper_limit:
-        return True
-    else:
-        return False
