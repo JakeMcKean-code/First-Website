@@ -43,7 +43,7 @@ def create_page_layout():
 
     st.header("Matrix Calculations")
 
-    matrix_num = st.number_input("Enter number of matrices.")
+    matrix_num = int(st.text_input("Enter number of matrices."))
     matrix_list = []
 
 
