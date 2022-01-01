@@ -44,15 +44,17 @@ def create_page_layout():
     st.header("Matrix Calculations")
 
     matrix_num = st.number_input("Enter number of matrices.")
-    matrix_dict = {}
+    matrix_list = []
 
 
     for i in range(matrix_num):
         mat_var = st.text_input("Enter Matrix variable name")
-        st.text_input("Enter Matirx in the form [ [1,2], [3,4] ]")
-        matrix_dict["var"] = sp.sympify(mat_var)
+        mat = st.text_input("Enter Matirx in the form [ [1,2], [3,4] ]")
+        if check_input_parse(mat_var) and check_input_parse(mat):
+            matrix_list.append[mat_var,sp.Matrix(mat)]
+        st.text(f"Matrix {i}/{matrix_num} saved")
         
-
+'''
     if eq_input and var_input:
         if check_input_parse(eq_input) and check_input_parse(var_input):
             eq_sp = sp.sympify(eq_input)
@@ -71,5 +73,5 @@ def create_page_layout():
                 check_output_code(check_for_code, sp.integrate(eq_sp, var_sp))
             else:
                 pass
-
+'''
 
