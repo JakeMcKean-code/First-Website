@@ -47,12 +47,14 @@ def create_page_layout():
     matrix_num = int(st.text_input("Enter number of matrices."))
     matrix_list = []
 
-    for i in range(matrix_num):
-        mat_var = st.text_input("Enter Matrix variable name")
-        mat = st.text_input("Enter Matirx in the form [ [1,2], [3,4] ]")
-        if check_input_parse(mat_var) and check_input_parse(mat):
-            matrix_list.append[mat_var, sp.Matrix(mat)]
-        st.text(f"Matrix {i}/{matrix_num} saved")
+    mat_var = st.text_input("Enter Matrix variable name")
+    mat = st.text_input("Enter Matirx in the form [ [1,2], [3,4] ]")
+    savebox = st.checkbox("Click to save matrix")
+    if(mat_var and mat and matrix_num):
+        for i in range(matrix_num):
+            if check_input_parse(mat_var) and check_input_parse(mat):
+                matrix_list.append[mat_var, sp.Matrix(mat)]
+            st.text(f"Matrix {i}/{matrix_num} saved")
 
 
 """
